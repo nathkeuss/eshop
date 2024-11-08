@@ -6,9 +6,13 @@ $message = null;
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(key_exists('customerName', $_POST)){
-        $order = new order($_POST['customerName']);
 
-        $message = "Commande faite";
+        try {
+            $order = new order($_POST['customerName']);
+            $message = 'Commande faite';
+        } catch (Exception $exception) {
+            $message = $exception->getMessage();
+        }
     }
 }
 

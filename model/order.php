@@ -16,6 +16,9 @@ class order
 //un objet crée pour une classe appelée "instance de class"
     public function __construct($customerName)
     {
+        if(mb_strlen($customerName) < 3) {
+            throw new Exception("Nom pas valide");
+        }
         $this->customerName = $customerName;
         $this->id = uniqid();
     }
