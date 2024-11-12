@@ -93,6 +93,11 @@ class order
         return $this->totalPrice;
     }
 
+    public function getDeliveryAddress(){
+        return $this->deliveryAddress;
+    }
+
+
 
 }
 

@@ -10,23 +10,11 @@
 </head>
 <body>
 
-<p><?php echo $message; ?></p>
-
-<p>Commande numéro : <?php echo $order->getId(); ?></p>
-
-<h1>Les produits :</h1>
-
-<ul>
-    <?php foreach ($order->getProduct() as $product) { ?>
-    <li><?php echo $product; ?></li>
-    <?php } ?>
-</ul>
-
-<h2>Prix total de la commande : </h2>
-
-<p><?php echo $order->getTotalPrice(); ?></p>
-
-<p><?php echo $order->getDeliveryAddress(); ?></p>
+<form method="POST">
+    <label for="address">ajout adresse livraison</label>
+    <input type="text" id="address" name="setDeliveryAddress">
+    <button type="submit"></button>
+</form>
 
 
 </body>

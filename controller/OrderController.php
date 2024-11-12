@@ -75,6 +75,33 @@ class OrderController
         require_once '../view/remove-product-view.php';
     }
 
+    public function setDeliveryAddress()
+    {
+        $message = null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            if (key_exists('deliveryAddress', $_POST)) {
+
+                try {
+
+                    $order = new order($_POST['deliveryAddress']);
+
+                    $orderRepository = new orderRepository();
+
+                    $orderRepository->persistOrder($order);
+
+                    $message = 'Adresse de livraison ajoutée';
+
+                } catch (Exception $exception) {
+                    $message = $exception->getMessage();
+                }
+            }
+        }
+
+
+        require_once '../view/add-delivery-address-view.php';
+    }
+
 
 }
 
