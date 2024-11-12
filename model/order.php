@@ -31,6 +31,8 @@ class order
         if ($this->status === "cart") {
             $this->products[] = "babybel";//j'ajoute un produit au tableau
             $this->totalPrice += 2;//j'ajoute 2 au totalPrice de base (donc 0)
+        } else {
+            throw new Exception('La commande ne peut pas être modifiée');
         }
     }
 
@@ -71,6 +73,26 @@ class order
             throw new Exception("La commande ne peut pas être envoyé car vous n'avez pas encore payé.");
         }
     }
+
+    // si je veux lire la valeur des propriétés de mon
+    // objet sans les rendre modifables au lieu de mettre
+    // la propriété en opublic je peux créer une méthode
+    // public qui retourne la valeur de la propriété,
+    // sans me permettre de la modifier
+
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getProduct() {
+        return $this->products;
+    }
+
+    public function getTotalPrice() {
+        return $this->totalPrice;
+    }
+
 
 }
 

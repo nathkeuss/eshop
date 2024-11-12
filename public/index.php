@@ -1,6 +1,6 @@
 <?php
 
-require_once('../controller/IndexController.php');
+require_once('../controller/OrderController.php');
 require_once('../controller/ErrorController.php');
 
 //récupère l'url actuelle
@@ -13,11 +13,17 @@ $uri = parse_url($requestUri, PHP_URL_PATH);
 $endUri = str_replace('/eshop/public/', '', $uri);
 $endUri = trim($endUri, '/');
 
+
 // en fonction de la valeur de $endUri on charge le bon contrôleur
 if ($endUri === "order") {
-    $indexController = new IndexController();
+    $indexController = new OrderController();
     $indexController->index();
-} else {
+}
+else if ($endUri === "add-product") {
+    $orderController = new OrderController();
+    $orderController->addProduct();
+}
+else {
     $errorController = new ErrorController();
     $errorController->notFound();
 }

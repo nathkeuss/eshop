@@ -13,9 +13,10 @@
 <header><h1 id="headerError">header</h1></header>
 
 <main><h1 id="error404">Error 404</h1></main>
-
+<canvas id="particleCanvas"></canvas>
 <footer><h1 id="footerError">footer</h1></footer>
 
+<script src="../public/main.js"></script>
 </body>
 </html>
 
