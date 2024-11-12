@@ -8,13 +8,13 @@
     <link rel="stylesheet" href="../public/style.css">
     <title>error</title>
 </head>
-<body>
+<body id="errorBody">
 
-<header id="headerError">header</header>
+<header><h1 id="headerError">header</h1></header>
 
-<main>Error 404</main>
+<main><h1 id="error404">Error 404</h1></main>
 
-<footer id="footerError">footer</footer>
+<footer><h1 id="footerError">footer</h1></footer>
 
 </body>
 </html>

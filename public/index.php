@@ -18,7 +18,8 @@ if ($endUri === "order") {
     $indexController = new IndexController();
     $indexController->index();
 } else {
-notFound();
+    $errorController = new ErrorController();
+    $errorController->notFound();
 }
 
 
