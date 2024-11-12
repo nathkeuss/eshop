@@ -26,3 +26,6 @@ button:hover {
     background-color: white;
     color: black;
 }
+#headerError {
+    color: blue;
+}
