@@ -18,14 +18,13 @@
 
 <ul>
     <?php foreach ($order->getProduct() as $product) { ?>
-    <li><?php echo $product; ?></li>
+        <li><?php echo $product; ?></li>
     <?php } ?>
 </ul>
 
 <h2>Prix total de la commande : </h2>
 
 <p><?php echo $order->getTotalPrice(); ?></p>
-
 
 </body>
 </html>

@@ -59,6 +59,22 @@ class OrderController
         require_once '../view/add-product-view.php';
     }
 
+    public function removeProduct() {
+
+        $message = null;
+
+        $orderRepository = new orderRepository();
+        $order = $orderRepository->findOrder();
+        try {
+            $order->removeProduct();
+            $orderRepository->persistOrder($order);
+            $message = 'Produit supprimé';
+        } catch (Exception $exception) {
+            $message = $exception->getMessage();
+        }
+        require_once '../view/remove-product-view.php';
+    }
+
 
 }
 

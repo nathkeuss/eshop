@@ -23,6 +23,10 @@ else if ($endUri === "add-product") {
     $orderController = new OrderController();
     $orderController->addProduct();
 }
+else if ($endUri === "remove-product") {
+    $orderController = new OrderController();
+    $orderController->removeProduct();
+}
 else {
     $errorController = new ErrorController();
     $errorController->notFound();
