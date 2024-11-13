@@ -16,7 +16,7 @@ $endUri = trim($endUri, '/');
 
 
 // en fonction de la valeur de $endUri on charge le bon contrôleur
-if ($endUri === "order") {
+if ($endUri === "create-order") {
     $indexController = new OrderController();
     $indexController->index();
 }

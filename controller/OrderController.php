@@ -3,6 +3,7 @@
 declare(strict_types=1);
 require_once '../model/order.php';
 require_once '../model/orderRepository.php';
+require_once '../vendor/autoload.php';
 
 class OrderController
 {
@@ -33,7 +34,17 @@ class OrderController
         }
 
 
-        require_once '../view/create-order-view.php';
+        $loader = new \Twig\Loader\FilesystemLoader('../view');
+        // je charge twig avec la configuration
+        // ça me permet d'avoir une variable $twig qui contient une instance
+        // de la classe twig
+        // et donc pouvoir utiliser les méthodes public que twig crées
+        $twig = new \Twig\Environment($loader);
+
+        //
+        echo $twig->render('create-order.twig', [
+            'message' => $message,
+        ]);
     }
 
     public function addProduct(): void

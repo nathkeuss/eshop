@@ -16,11 +16,11 @@
 
 <main>
 
-    <?php if ($message) { ?>
+    {% if message %}
 
-    <h2><?php echo $message; ?></h2>
+    <h2>{{ message }}</h2>
 
-    <?php } ?>
+    {% endif %}
 
     <form method="POST">
 
