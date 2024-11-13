@@ -59,7 +59,8 @@ class OrderController
         require_once '../view/add-product-view.php';
     }
 
-    public function removeProduct() {
+    public function removeProduct()
+    {
 
         $message = null;
         $orderRepository = new orderRepository();
@@ -78,22 +79,26 @@ class OrderController
     public function setDeliveryAddress()
     {
         //j'instancie la class orderRepository
+        //pour pouvoir utiliser ses méthodes
         $orderRepository = new orderRepository();
         //j'appelle une de ses méthodes
+        //pour récup une commande existante
         $order = $orderRepository->findOrder();
 
         $message = null;
-
+        //je vérifie et récupère les données de la requête POST
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (key_exists('deliveryAddress', $_POST)) {
 
+                //j'essaie de modifier ma commande avec l'adresse de livraison
                 try {
                     //je dis que l'adresse de livraison sera celle mise dans le formulaire
                     $order->setDeliveryAddress($_POST['deliveryAddress']);
-
+                    $orderRepository->persistOrder($order);
                     $message = "Adresse de livraison ajoutée";
-
+                    //si la modification echoue (parce que j'ai une exception
+                    // qui apparait (commande non modifiable etc)
                 } catch (Exception $exception) {
                     $message = $exception->getMessage();
                 }
@@ -102,6 +107,30 @@ class OrderController
 
 
         require_once '../view/add-delivery-address-view.php';
+    }
+
+    public function payment()
+    {
+        $orderRepository = new orderRepository();
+        $order = $orderRepository->findOrder();
+
+        $message = null;
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+            if (key_exists('paymentMethod', $_POST)) {
+
+                try {
+                    $order->pay($_POST['paymentMethod']);
+                    $orderRepository->persistOrder($order);
+                    $message = "Paiement validé";
+
+                } catch (Exception $exception) {
+                    $message = $exception->getMessage();
+                }
+            }
+        }
+        require_once '../view/payment-view.php';
     }
 
 

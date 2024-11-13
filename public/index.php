@@ -31,6 +31,10 @@ else if ($endUri === "delivery-address") {
     $orderController = new OrderController();
     $orderController->setDeliveryAddress();
 }
+else if ($endUri === "payment") {
+    $orderController = new OrderController();
+    $orderController->payment();
+}
 else {
     $errorController = new ErrorController();
     $errorController->notFound();

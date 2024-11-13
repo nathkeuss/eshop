@@ -5,6 +5,7 @@ class order
 
     private $id;
     private $customerName;
+    private $paymentMethod;
     private $deliveryAddress;
     private $status = "cart"; //je dis que status = cart de base
     private $totalPrice = 0; //que le prix total de base est 0
@@ -57,9 +58,10 @@ class order
         }
     }
 
-    public function pay()//fonction qui passe le status cart à paid pour dire qu'il peut payer
+    public function pay($paymentMethod)//fonction qui passe le status cart à paid pour dire qu'il peut payer
     {
         if ($this->status === "deliveryAddressSet" && !empty($this->products)) {
+            $this->paymentMethod = $paymentMethod;
             $this->status = "paid";
         } else {
             throw new Exception("La commande ne peut pas être payé car vous n'avez pas mis d'adresse de livraison.");
@@ -97,6 +99,10 @@ class order
 
     public function getDeliveryAddress(){
         return $this->deliveryAddress;
+    }
+
+    public function getStatus() {
+        return $this->status;
     }
 
 
