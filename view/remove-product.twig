@@ -10,21 +10,21 @@
 </head>
 <body>
 
-<p><?php echo $message; ?></p>
+<p>{{ message }}</p>
 
-<p>Commande numéro : <?php echo $order->getId(); ?></p>
+<p>Commande numéro : {{ order.getId() }}</p>
 
 <h1>Les produits :</h1>
 
 <ul>
-    <?php foreach ($order->getProduct() as $product) { ?>
-        <li><?php echo $product; ?></li>
-    <?php } ?>
+    {% for product in order.product%}
+        <li>{{ product }}</li>
+    {% endfor %}
 </ul>
 
 <h2>Prix total de la commande : </h2>
 
-<p><?php echo $order->getTotalPrice(); ?></p>
+<p>{{ order.getTotalPrice() }}</p>
 
 </body>
 </html>

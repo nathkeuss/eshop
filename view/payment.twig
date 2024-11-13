@@ -10,10 +10,10 @@
 </head>
 <body>
 
-<p><?php echo $message; ?></p>
-<p>Numéro de commande : <?php echo $order->getId(); ?></p>
-<p>Adresse : <?php echo $order->getDeliveryAddress(); ?></p>
-<p><?php echo $order->getStatus(); ?></p>
+<p>{{ message }}</p>
+<p>Numéro de commande : {{order.getId()}}</p>
+<p>Adresse : {{ order.getDeliveryAddress() }}</p>
+<p>{{ order.getStatus() }}</p>
 
 <form method="POST">
     <label for="paymentMethod">paie stp</label>

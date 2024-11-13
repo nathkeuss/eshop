@@ -68,7 +68,18 @@ class OrderController
             $message = $exception->getMessage();
         }
 
-        require_once '../view/add-product.twig';
+        $loader = new \Twig\Loader\FilesystemLoader('../view');
+        // je charge twig avec la configuration
+        // ça me permet d'avoir une variable $twig qui contient une instance
+        // de la classe twig
+        // et donc pouvoir utiliser les méthodes public que twig crées
+        $twig = new \Twig\Environment($loader);
+
+        //
+        echo $twig->render('add-product.twig', [
+            'message' => $message,
+            'order' => $order,
+        ]);
     }
 
     public function removeProduct(): void
@@ -85,7 +96,19 @@ class OrderController
         } catch (Exception $exception) {
             $message = $exception->getMessage();
         }
-        require_once '../view/remove-product.twig';
+
+        $loader = new \Twig\Loader\FilesystemLoader('../view');
+        // je charge twig avec la configuration
+        // ça me permet d'avoir une variable $twig qui contient une instance
+        // de la classe twig
+        // et donc pouvoir utiliser les méthodes public que twig crées
+        $twig = new \Twig\Environment($loader);
+
+        //
+        echo $twig->render('remove-product.twig', [
+            'message' => $message,
+            'order' => $order,
+        ]);
     }
 
     public function setDeliveryAddress(): void
@@ -117,8 +140,18 @@ class OrderController
             }
         }
 
+        $loader = new \Twig\Loader\FilesystemLoader('../view');
+        // je charge twig avec la configuration
+        // ça me permet d'avoir une variable $twig qui contient une instance
+        // de la classe twig
+        // et donc pouvoir utiliser les méthodes public que twig crées
+        $twig = new \Twig\Environment($loader);
 
-        require_once '../view/add-delivery-address.twig';
+        //
+        echo $twig->render('add-delivery-address.twig', [
+            'message' => $message,
+            'order' => $order,
+        ]);
     }
 
     public function payment(): void
@@ -142,7 +175,18 @@ class OrderController
                 }
             }
         }
-        require_once '../view/payment.twig';
+        $loader = new \Twig\Loader\FilesystemLoader('../view');
+        // je charge twig avec la configuration
+        // ça me permet d'avoir une variable $twig qui contient une instance
+        // de la classe twig
+        // et donc pouvoir utiliser les méthodes public que twig crées
+        $twig = new \Twig\Environment($loader);
+
+        //
+        echo $twig->render('payment.twig', [
+            'message' => $message,
+            'order' => $order,
+        ]);
     }
 
 
