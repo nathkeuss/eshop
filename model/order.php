@@ -1,21 +1,22 @@
 <?php
 
+declare(strict_types=1);
 class order
 {
 
-    private $id;
-    private $customerName;
-    private $paymentMethod;
-    private $deliveryAddress;
-    private $status = "cart"; //je dis que status = cart de base
-    private $totalPrice = 0; //que le prix total de base est 0
-    private $products = []; //et que les produits seront dans un tableau
+    private string $id;
+    private string $customerName;
+    private float $paymentMethod;
+    private ?string $deliveryAddress;
+    private string $status = "cart"; //je dis que status = cart de base
+    private float $totalPrice = 0; //que le prix total de base est 0
+    private array $products = []; //et que les produits seront dans un tableau
 
 
 //le construteur est une méthode "magique" car elle est appelée automatiquement
 //le constructeur est appelée quand un objet est crée pour cette classe
 //un objet crée pour une classe appelée "instance de class"
-    public function __construct($customerName)
+    public function __construct(string $customerName)
     {
         if(mb_strlen($customerName) < 3) {
             throw new Exception("Nom pas valide");
@@ -25,7 +26,7 @@ class order
     }
 
 
-    public function addProduct()//fonction qui ajoute un produit et un prix si le status est cart.
+    public function addProduct(): void//fonction qui ajoute un produit et un prix si le status est cart.
     {   //le $this fait référence à l'object actuel
         //c'est à dire à $order1, ou $order2 etc
         //donc à l'objet actuel issu de la classe
@@ -38,7 +39,7 @@ class order
     }
 
 
-    public function removeProduct()
+    public function removeProduct():void
     { //function qui retire le dernier produit ajouter
         if ($this->status === "cart" && !empty($this->products)) {
             array_pop($this->products);//je retire le dernier produit ajouter au tableau
@@ -48,7 +49,7 @@ class order
         }
     }
 
-    public function setDeliveryAddress($deliveryAddress)
+    public function setDeliveryAddress(string $deliveryAddress): void
     {
         if ($this->status === "cart") {
             $this->deliveryAddress = $deliveryAddress;
@@ -58,7 +59,7 @@ class order
         }
     }
 
-    public function pay($paymentMethod)//fonction qui passe le status cart à paid pour dire qu'il peut payer
+    public function pay(float $paymentMethod): void//fonction qui passe le status cart à paid pour dire qu'il peut payer
     {
         if ($this->status === "deliveryAddressSet" && !empty($this->products)) {
             $this->paymentMethod = $paymentMethod;
@@ -68,7 +69,7 @@ class order
         }
     }
 
-    public function sendOrder()
+    public function sendOrder(): void
     {
         if ($this->status === "paid") { //si il a payé
             $this->status = "sent"; //le status passe en "envoyé"
@@ -85,23 +86,23 @@ class order
     // sans me permettre de la modifier
 
 
-    public function getId() {
+    public function getId():string {
         return $this->id;
     }
 
-    public function getProduct() {
+    public function getProduct():array {
         return $this->products;
     }
 
-    public function getTotalPrice() {
+    public function getTotalPrice():float {
         return $this->totalPrice;
     }
 
-    public function getDeliveryAddress(){
+    public function getDeliveryAddress():string {
         return $this->deliveryAddress;
     }
 
-    public function getStatus() {
+    public function getStatus():string {
         return $this->status;
     }
 

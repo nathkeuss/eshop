@@ -1,12 +1,13 @@
 <?php
 
+declare(strict_types=1);
 require_once '../model/order.php';
 require_once '../model/orderRepository.php';
 
 class OrderController
 {
 
-    public function index()
+    public function index(): void
     {
         $message = null;
 
@@ -35,7 +36,7 @@ class OrderController
         require_once '../view/create-order-view.php';
     }
 
-    public function addProduct()
+    public function addProduct(): void
     {
 
         $message = null;
@@ -59,7 +60,7 @@ class OrderController
         require_once '../view/add-product-view.php';
     }
 
-    public function removeProduct()
+    public function removeProduct(): void
     {
 
         $message = null;
@@ -76,7 +77,7 @@ class OrderController
         require_once '../view/remove-product-view.php';
     }
 
-    public function setDeliveryAddress()
+    public function setDeliveryAddress(): void
     {
         //j'instancie la class orderRepository
         //pour pouvoir utiliser ses méthodes
@@ -109,7 +110,7 @@ class OrderController
         require_once '../view/add-delivery-address-view.php';
     }
 
-    public function payment()
+    public function payment(): void
     {
         $orderRepository = new orderRepository();
         $order = $orderRepository->findOrder();
