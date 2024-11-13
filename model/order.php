@@ -51,7 +51,9 @@ class order
     {
         if ($this->status === "cart") {
             $this->deliveryAddress = $deliveryAddress;
-            $this->status === "deliveryAddressSet";
+            $this->status = "deliveryAddressSet";
+        } else {
+            throw new Exception("Impossible de modifier l'adresse");
         }
     }
 

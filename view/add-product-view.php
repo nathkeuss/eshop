@@ -26,7 +26,6 @@
 
 <p><?php echo $order->getTotalPrice(); ?></p>
 
-<p><?php echo $order->getDeliveryAddress(); ?></p>
 
 
 </body>

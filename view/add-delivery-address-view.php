@@ -10,10 +10,14 @@
 </head>
 <body>
 
+<p><?php echo $message; ?></p>
+<p>Numéro de commande : <?php echo $order->getId(); ?></p>
+<p>Adresse : <?php echo $order->getDeliveryAddress(); ?></p>
+
 <form method="POST">
-    <label for="address">ajout adresse livraison</label>
-    <input type="text" id="address" name="setDeliveryAddress">
-    <button type="submit"></button>
+    <label for="getDeliveryAddress">addresse</label>
+    <input type="text" id="address" name="deliveryAddress" placeholder="Entrez votre adresse de livraison"/>
+    <button type="submit">Valider</button>
 </form>
 
 

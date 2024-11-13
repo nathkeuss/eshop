@@ -28,7 +28,7 @@ else if ($endUri === "remove-product") {
     $orderController->removeProduct();
 }
 else if ($endUri === "delivery-address") {
-    $orderController = new orderController();
+    $orderController = new OrderController();
     $orderController->setDeliveryAddress();
 }
 else {

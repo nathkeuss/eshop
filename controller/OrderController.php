@@ -62,9 +62,9 @@ class OrderController
     public function removeProduct() {
 
         $message = null;
-
         $orderRepository = new orderRepository();
         $order = $orderRepository->findOrder();
+
         try {
             $order->removeProduct();
             $orderRepository->persistOrder($order);
@@ -77,20 +77,22 @@ class OrderController
 
     public function setDeliveryAddress()
     {
+        //j'instancie la class orderRepository
+        $orderRepository = new orderRepository();
+        //j'appelle une de ses méthodes
+        $order = $orderRepository->findOrder();
+
         $message = null;
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
             if (key_exists('deliveryAddress', $_POST)) {
 
                 try {
+                    //je dis que l'adresse de livraison sera celle mise dans le formulaire
+                    $order->setDeliveryAddress($_POST['deliveryAddress']);
 
-                    $order = new order($_POST['deliveryAddress']);
-
-                    $orderRepository = new orderRepository();
-
-                    $orderRepository->persistOrder($order);
-
-                    $message = 'Adresse de livraison ajoutée';
+                    $message = "Adresse de livraison ajoutée";
 
                 } catch (Exception $exception) {
                     $message = $exception->getMessage();
