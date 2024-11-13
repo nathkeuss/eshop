@@ -68,7 +68,7 @@ class OrderController
             $message = $exception->getMessage();
         }
 
-        require_once '../view/add-product-view.php';
+        require_once '../view/add-product.twig';
     }
 
     public function removeProduct(): void
@@ -85,7 +85,7 @@ class OrderController
         } catch (Exception $exception) {
             $message = $exception->getMessage();
         }
-        require_once '../view/remove-product-view.php';
+        require_once '../view/remove-product.twig';
     }
 
     public function setDeliveryAddress(): void
@@ -118,7 +118,7 @@ class OrderController
         }
 
 
-        require_once '../view/add-delivery-address-view.php';
+        require_once '../view/add-delivery-address.twig';
     }
 
     public function payment(): void
@@ -142,7 +142,7 @@ class OrderController
                 }
             }
         }
-        require_once '../view/payment-view.php';
+        require_once '../view/payment.twig';
     }
 
 
